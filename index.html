@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebGIS Klitih - DIY</title>
+  <meta name="description" content="WebGIS Interaktif Klitih DIY 2022-2024">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+  </style>
+</head>
+<body>
+<div class="container">
+  <div id="map"></div>
+
+  <div class="floating-table-container">
+    <table id="dataTable">
+      <thead>
+        <tr><th>📍 Kabupaten</th><th>📅 Tanggal</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <aside id="sidebar">
+    <h2>📊 Statistik Klitih DIY</h2>
+
+    <div class="chart-container">
+      <canvas id="chartBulan" aria-label="Grafik kejadian per bulan" role="img"></canvas>
+    </div>
+
+    <div class="filter-group">
+      <label for="filterTahun">Tahun:</label>
+      <select id="filterTahun"></select>
+    </div>
+
+    <div class="filter-group">
+      <label for="filterBulan">Bulan:</label>
+      <select id="filterBulan"></select>
+    </div>
+
+    <div class="filter-group">
+      <label for="filterKabupaten">Kabupaten:</label>
+      <select id="filterKabupaten"></select>
+    </div>
+
+    <button onclick="applyFilter()">🔄 Terapkan Filter</button>
+
+    <div class="checkbox-container">
+      <input type="checkbox" id="toggleHeatmap" checked onchange="applyFilter()">
+      <label for="toggleHeatmap">🗺️ Tampilkan Heatmap</label>
+    </div>
+
+    <small style="display:block;margin-top:1rem;">Sumber: Polda DIY 2022-2024</small>
+  </aside>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+<script src="app_full_modified.js"></script>
+</body>
+</html>
