@@ -1,0 +1,422 @@
+/* Modern WebGIS Styles with Glassmorphism and Animations */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+/* Sidebar with Glassmorphism */
+#sidebar {
+  width: 360px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1.5rem;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#sidebar:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(2px);
+}
+
+#sidebar h2 {
+  color: #fff;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: slideInDown 0.6s ease-out;
+}
+
+/* Map Container */
+#map {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  border-radius: 0 20px 20px 0;
+  overflow: hidden;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+/* Filter Groups with Modern Cards */
+.filter-group {
+  margin-bottom: 1.2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.filter-group:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.filter-group select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-group select:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.filter-group select:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Chart Container */
+.chart-container {
+  margin-bottom: 1.5rem;
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  padding: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.chart-container canvas {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.chart-container:hover canvas {
+  transform: scale(1.02);
+}
+
+/* Modern Button */
+button {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(238, 90, 36, 0.4);
+  background: linear-gradient(135deg, #ff7979, #ff6348);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Checkbox Container */
+.checkbox-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.checkbox-container:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.8rem;
+  cursor: pointer;
+  accent-color: #ff6b6b;
+}
+
+.checkbox-container label {
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.checkbox-container label:hover {
+  color: #ff6b6b;
+}
+
+/* Floating Table with Modern Design */
+.floating-table-container {
+  position: absolute;
+  bottom: 20px;
+  left: 40%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 800px;
+  max-height: 300px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  border-radius: 20px;
+  z-index: 500;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: slideInUp 0.6s ease-out;
+}
+
+.floating-table-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #ee5a24, #ff6b6b);
+  animation: shimmer 2s infinite;
+  z-index: 11;
+}
+
+.floating-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.floating-table-container th,
+.floating-table-container td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.floating-table-container th {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+  position: sticky;
+  top: 4px;
+  z-index: 10;
+  border-bottom: 2px solid #ff6b6b;
+}
+
+.floating-table-container td {
+  background: rgba(255, 255, 255, 0.8);
+  color: #444;
+  font-size: 0.9rem;
+}
+
+.floating-table-container tbody tr:hover {
+  background: rgba(255, 107, 107, 0.1);
+  transform: scale(1.01);
+}
+
+/* Source Attribution */
+small {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 0.8rem;
+  text-align: center;
+  display: block;
+  margin-top: 1.5rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  #sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 40vh;
+    border-radius: 0 0 20px 20px;
+  }
+  
+  #map {
+    flex: 1;
+    border-radius: 0;
+  }
+  
+  .floating-table-container {
+    width: calc(100% - 20px);
+    bottom: 10px;
+    max-height: 200px;
+  }
+}
+
+/* Scrollbar Styling */
+#sidebar::-webkit-scrollbar,
+.floating-table-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+#sidebar::-webkit-scrollbar-track,
+.floating-table-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+#sidebar::-webkit-scrollbar-thumb,
+.floating-table-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 107, 0.6);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#sidebar::-webkit-scrollbar-thumb:hover,
+.floating-table-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 107, 0.8);
+}
+
+/* Loading Animation for Chart */
+.chart-container.loading {
+  position: relative;
+}
+
+.chart-container.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.floating-table-container::before {
+  display: none !important;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
